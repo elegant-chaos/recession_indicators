@@ -2,7 +2,8 @@ library(tidyverse)
 library(readr)
 library(lubridate)
 
-dat <- read_csv("~/Desktop/backup downloaded recession_indicators-master/data_05_10.csv")
+dat <- read_csv("data.csv") %>% filter(curcdq == "USD")
+prices <- read_csv("prices.csv") %>% select(tic, datacqtr, prccq)
 
 #clean data
 
@@ -21,5 +22,16 @@ dat <- dat %>%
   dplyr::select(-cstkcvq, -cheq, -csh12q, #removing all variables changed
          -indfmt, -consol, -popsrc, -datafmt) #removing all factors with 1 level
 
-names(dat)[12] <- "dividends_per_share"
-names(dat)[10] <- "earnings_per_share"
+dat <- dat %>% mutate(earnings_per_share = epspxq, 
+                      dividends_per_share = dvpspq) %>% select(-epspxq, -dvpspq)
+
+prices <- prices %>% mutate(price = prccq) %>% select(-prccq)
+
+dat <- dat %>% inner_join(prices, by = c("tic", "datacqtr"))
+
+
+#for analysis
+final <- dat %>% select(cashflow_per_share, book_value_per_share, dividends_per_share, price,
+                        tic, fyearq, datafqtr)
+rm(dat)
+rm(prices)
