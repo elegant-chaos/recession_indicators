@@ -17,8 +17,8 @@ dat <- dat %>%
 
 #select applicable rows
 dat <- dat %>%
-  mutate(book_value_per_share = cstkcvq/csh12q, #carrying values / common shares = book value per share
-         cashflow_per_share = cheq/csh12q) %>% #cashflow/csh12q = approx. cashflow per share
+  mutate(book_value = cstkcvq, #carrying values / common shares = book value per share
+         cashflow = cheq) %>% #cashflow/csh12q = approx. cashflow per share
   dplyr::select(-cstkcvq, -cheq, -csh12q, #removing all variables changed
          -indfmt, -consol, -popsrc, -datafmt) #removing all factors with 1 level
 
@@ -31,7 +31,11 @@ dat <- dat %>% inner_join(prices, by = c("tic", "datacqtr"))
 
 
 #for analysis
-final <- dat %>% select(cashflow_per_share, book_value_per_share, dividends_per_share, price,
-                        tic, fyearq, datafqtr)
+final <- dat %>% select(cashflow, book_value, dividends_per_share, price,
+                        tic, fyearq, datafqtr) %>%
+  filter(!is.na(cashflow)) %>% filter(!is.na(book_value)) %>% filter(!is.na(dividends_per_share)) %>%
+  filter(!is.na(price))
 rm(dat)
 rm(prices)
+
+chart.Correlation(final[,1:4], histogram=TRUE, pch=19)
