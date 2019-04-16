@@ -6,9 +6,17 @@ output: html_document
 ---
 
 # Abstract
+Recreate the paper, describe. Extend analysis through current year. Summarize findings. 
 
 # Data
+Our data source is ____. Description of variables. Give relevant definitions, context, etc.
 
 # Methodology
+Describe models. Include table from office hours. 
+Note results from using two different coursenesses for time variable (quarterly and yearly). Highlight that this is another contribution from us. 
 
 # Findings
+Which model is most significant? Did we replicate what the paper reported? What did we learn from our extension of the model to more recent data? 
+
+# Plots
+Reproduce the plots in the paper. Note differences and extend to new years. Explore new plots, see if we can come up with anything more descriptive. 

@@ -56,3 +56,5 @@ random_effects_2_way = lmer(price_log ~ book_value_log + dividends_per_share_log
                             data = final, REML = FALSE)
 summary(random_effects_2_way)
 
+# NEXT STEPS: FIGURE OUT HOW TO COMPARE THE RANDOM AND FIXED EFFECTS MODELS
+# MAKE SURE THE 2-WAY RANDOM EFFECTS IS FIT CORRECTLY

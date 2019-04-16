@@ -3,9 +3,9 @@ library(readr)
 library(lubridate)
 library(PerformanceAnalytics)
 
-dat <- read_csv("~/Desktop/backup downloaded recession_indicators-master/data_05_10.csv") %>% 
+dat <- read_csv("data.csv") %>% 
   filter(curcdq == "USD")
-prices <- read_csv("~/Desktop/backup downloaded recession_indicators-master/data_new.csv") %>% 
+prices <- read_csv("prices.csv") %>% 
   select(tic, datacqtr, prccq)
 
 #clean data
@@ -45,4 +45,5 @@ final <- dat %>% select(cashflow, book_value, dividends_per_share, price,
 rm(dat)
 rm(prices)
 
-chart.Correlation(final[,1:4], histogram=TRUE, pch=19)
+
+
