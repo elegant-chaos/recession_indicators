@@ -41,7 +41,8 @@ dat <- dat %>% inner_join(prices, by = c("tic", "datacqtr"))
 final <- dat %>% select(cashflow, book_value, dividends_per_share, price,
                         tic, fyearq, datafqtr) %>%
   filter(!is.na(cashflow)) %>% filter(!is.na(book_value)) %>% filter(!is.na(dividends_per_share)) %>%
-  filter(!is.na(price))
+  filter(!is.na(price)) %>%
+  mutate(year = fyearq) %>% select(-fyearq)
 rm(dat)
 rm(prices)
 

@@ -26,7 +26,7 @@ fixed_effects_companies <- lm(price_log ~ book_value_log + dividends_per_share_l
 summary(fixed_effects_companies) # Crazy high R^2 (~0.82)
 
 # Time Fixed Effects (Fixed Effects for Year)
-final <- final %>% mutate(year_factor = as.factor(fyearq))
+final <- final %>% mutate(year_factor = as.factor(year))
 fixed_effects_time <- lm(price_log ~ book_value_log + dividends_per_share_log +
                                 dividends_per_share_ind + cashflow_log + year_factor, data = final)
 summary(fixed_effects_time) 
@@ -40,8 +40,7 @@ summary(fixed_effects_two_way) # Slightly higher than company fixed effects R^2 
 random_effects_companies = lmer(price_log ~ book_value_log + dividends_per_share_log +
                 dividends_per_share_ind + cashflow_log + (1|tic), data = final, REML = FALSE)
 summary(random_effects_companies)
-# NOTE TO SELF: UNSURE ABOUT HOW TO COMPARE THIS TO THE FIXED EFFECTS
-# ANOVA DOESN'T WORK FOR THIS COMPARISON
+
 
 # Time Random Effects (Randome Effects for Year)
 random_effects_time = lmer(price_log ~ book_value_log + dividends_per_share_log +
