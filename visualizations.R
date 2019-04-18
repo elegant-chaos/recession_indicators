@@ -27,6 +27,11 @@ two_way_fixed_fitted %>% ggplot() +
   ylab("True Price Values (log scale)") +
   ggtitle("Fitted Versus True Prices")
 
+# Messing around with a line for every company 
+two_way_fixed_fitted %>% ggplot() +
+  geom_line(aes(x = year, y = .fitted, group = tic, color = tic)) +
+  theme_void() + theme(legend.position="none")
+
 
 # 3. Individual Fixed Effects (AKA Company Fixed Effects)
 

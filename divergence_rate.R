@@ -5,7 +5,10 @@
 
 
 # Calculate divergence
-two_way_fixed_fitted <- two_way_fixed_fitted %>%
+for_divergence <- fixed_effects_companies %>% augment(final) %>% 
   mutate(divergence = price_log - .fitted)
+
+
+
 
 # NEED TO BUILD TABLE FROM PAGE SIX OF THE PAPER

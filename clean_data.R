@@ -3,10 +3,13 @@ library(readr)
 library(lubridate)
 library(PerformanceAnalytics)
 
-dat <- read_csv("data.csv") %>% 
+#dat <- read_csv("data.csv") %>% 
+#  filter(curcdq == "USD")
+#prices <- read_csv("prices.csv") %>% 
+#  select(tic, datacqtr, prccq)
+
+dat <- read_csv("full_data.csv") %>% 
   filter(curcdq == "USD")
-prices <- read_csv("prices.csv") %>% 
-  select(tic, datacqtr, prccq)
 
 #clean data
 
@@ -30,11 +33,12 @@ dat <- dat %>%
 dat <- dat %>% 
   mutate(earnings_per_share = epspxq, 
          dividends_per_share = dvpspq) %>% 
-  select(-epspxq, -dvpspq)
+  select(-epspxq, -dvpspq)  %>% 
+  mutate(price = prccq) %>% select(-prccq)
 
-prices <- prices %>% mutate(price = prccq) %>% select(-prccq)
+#prices <- prices %>% mutate(price = prccq) %>% select(-prccq)
 
-dat <- dat %>% inner_join(prices, by = c("tic", "datacqtr"))
+#dat <- dat %>% inner_join(prices, by = c("tic", "datacqtr"))
 
 
 #for analysis
@@ -42,9 +46,9 @@ final <- dat %>% select(cashflow, book_value, dividends_per_share, price,
                         tic, fyearq, datafqtr) %>%
   filter(!is.na(cashflow)) %>% filter(!is.na(book_value)) %>% filter(!is.na(dividends_per_share)) %>%
   filter(!is.na(price)) %>%
-  mutate(year = fyearq) %>% select(-fyearq)
+  mutate(year = fyearq) %>% select(-fyear)
 rm(dat)
-rm(prices)
+#rm(prices)
 
 
 
