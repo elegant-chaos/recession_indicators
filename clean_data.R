@@ -1,5 +1,5 @@
 library(tidyverse)
-library(readr)
+library(stringr)
 library(lubridate)
 library(PerformanceAnalytics)
 
@@ -14,20 +14,18 @@ dat <- read_csv("full_data.csv") %>%
 #clean data
 
 #change str()
-cols <- c("indfmt", "consol", "popsrc", "datafmt", "tic", "conm", "curcdq",
+cols <- c("indfmt", "consol", "popsrc", "datafmt", "tic", "curcdq",
           "datacqtr", "datafqtr", "costat")
 dat[cols] <- lapply(dat[cols], factor)
-dat$datadate <- as.Date(parse_date_time(dat$datadate,"ymd"))
-dat <- dat %>%
-  mutate(datadate = as.Date(datadate, format = "%Y-%m-%d"))
-prices$tic <- as.factor(prices$tic)
-prices$datacqtr = as.factor(prices$datacqtr)
+#dat$datadate <- as.Date(parse_date_time(dat$datadate,"ymd"))
+#dat <- dat %>%
+#  mutate(datadate = as.Date(datadate, format = "%Y-%m-%d"))
 
 #select applicable rows
 dat <- dat %>%
   mutate(book_value = cstkcvq, #carrying values / common shares = book value per share
          cashflow = cheq) %>% #cashflow/csh12q = approx. cashflow per share
-  dplyr::select(-cstkcvq, -cheq, -csh12q, #removing all variables changed
+  dplyr::select(-cstkcvq, -cheq,  #removing all variables changed
                 -indfmt, -consol, -popsrc, -datafmt) #removing all factors with 1 level
 
 dat <- dat %>% 
@@ -36,6 +34,10 @@ dat <- dat %>%
   select(-epspxq, -dvpspq)  %>% 
   mutate(price = prccq) %>% select(-prccq)
 
+dat <- dat %>% separate(datacqtr, c("year", "quarter"), "Q")
+dat <- dat %>% mutate(year = as.numeric(year),
+                      quarter = as.numeric(quarter))
+
 #prices <- prices %>% mutate(price = prccq) %>% select(-prccq)
 
 #dat <- dat %>% inner_join(prices, by = c("tic", "datacqtr"))
@@ -43,10 +45,9 @@ dat <- dat %>%
 
 #for analysis
 final <- dat %>% select(cashflow, book_value, dividends_per_share, price,
-                        tic, fyearq, datafqtr) %>%
+                        tic, year, quarter) %>%
   filter(!is.na(cashflow)) %>% filter(!is.na(book_value)) %>% filter(!is.na(dividends_per_share)) %>%
-  filter(!is.na(price)) %>%
-  mutate(year = fyearq) %>% select(-fyear)
+  filter(!is.na(price)) 
 rm(dat)
 #rm(prices)
 
