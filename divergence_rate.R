@@ -9,7 +9,4 @@ library(broom)
 for_divergence <- fixed_effects_companies %>% augment(final) %>% 
   mutate(divergence = price_log - .fitted)
 
-
-
-
 # NEED TO BUILD TABLE FROM PAGE SIX OF THE PAPER

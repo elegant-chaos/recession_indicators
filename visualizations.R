@@ -28,9 +28,9 @@ two_way_fixed_fitted %>% ggplot() +
   ggtitle("Fitted Versus True Prices")
 
 # Messing around with a line for every company 
-two_way_fixed_fitted %>% ggplot() +
-  geom_line(aes(x = year, y = .fitted, group = tic, color = tic)) +
-  theme_void() + theme(legend.position="none")
+# two_way_fixed_fitted %>% ggplot() +
+#   geom_line(aes(x = year, y = .fitted, group = tic, color = tic)) +
+#   theme_void() + theme(legend.position="none")
 
 
 # 3. Individual Fixed Effects (AKA Company Fixed Effects)
@@ -57,14 +57,7 @@ two_way_fixed_broom %>% filter(str_detect(term, 'year')) %>%
 
 # 5. Mean of Divergence Rate over Time, by Year
 
-# NOTE: THIS PLOT LOOKS REALLY FUNKY COMPARED TO THE PAPER
-# FAILED TO REPLICATE RESULTS
-# CHECK HOW MANY 2004 OBSERVATIONS, MAY BE SKEWING THINGS
-# OTHERWISE, WE CAN STILL SEE THAT 2008 HAS A HIGHER MAGNITUTE OF DIVERGENCE
-# WHICH IS IN THE SPIRIT OF THE FINDINGS IN THE PAPER, EVEN IF THE 
-# GRAPH IS SHAPED DIFFERENTLY
-
-two_way_fixed_fitted %>% group_by(year) %>% 
+for_divergence %>% group_by(year) %>% 
   summarise(mean_divergence = mean(divergence)) %>% 
   ggplot() + geom_point(aes(x = year, y = mean_divergence)) +
   geom_line(aes(x = year, y = mean_divergence)) + 
@@ -78,7 +71,7 @@ two_way_fixed_fitted %>% group_by(year) %>%
 # OUR MODEL FLIPS THE SIGN ON DIVERGENCE
 # HIGHER DIVERGENCE VALUES CORRESPOND TO 2008 RECESSION
 
-two_way_fixed_fitted %>% filter(year %in% c(2006, 2007, 2008)) %>% 
+for_divergence %>% filter(year %in% c(2006, 2007, 2008)) %>% 
   mutate(year = as.factor(year)) %>%
   ggplot() + geom_density(aes(x = divergence, group = year, color = year)) +
   ggtitle("Divergence Distribution by Year (2006-2008)")
@@ -88,7 +81,7 @@ two_way_fixed_fitted %>% filter(year %in% c(2006, 2007, 2008)) %>%
 # NEED TO PULL THROUGH 2013 TO MATCH THE PAPER ON THIS PLOT
 
 
-two_way_fixed_fitted %>% filter(year %in% c(2009:2013)) %>%
+for_divergence %>% filter(year %in% c(2009:2013)) %>%
   mutate(year = as.factor(year)) %>%
   ggplot() + geom_density(aes(x = divergence, group = year, color = year)) +
   ggtitle("Divergence Distribution by Year (2009-2013)") 
@@ -98,7 +91,7 @@ two_way_fixed_fitted %>% filter(year %in% c(2009:2013)) %>%
 
 # 8. Distribution of Divergence over all Years
 
-two_way_fixed_fitted %>% 
+for_divergence %>% 
   mutate(year = as.factor(year)) %>%
   ggplot() + geom_density(aes(x = divergence, group = year, color = year)) +
   ggtitle("Divergence Distribution by Year")
