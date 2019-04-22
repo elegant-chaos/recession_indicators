@@ -47,7 +47,7 @@ dat <- dat %>% mutate(year = as.numeric(year),
 final <- dat %>% select(cashflow, book_value, dividends_per_share, price,
                         tic, year, quarter) %>%
   filter(!is.na(cashflow)) %>% filter(!is.na(book_value)) %>% filter(!is.na(dividends_per_share)) %>%
-  filter(!is.na(price)) 
+  filter(!is.na(price)) %>% filter(!is.na(year))
 rm(dat)
 #rm(prices)
 
