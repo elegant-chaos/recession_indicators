@@ -1,4 +1,5 @@
 # Need two_way_fixed_effects from build_models.R loaded
+library(broom)
 
 # Run if needed
 # two_way_fixed_fitted <- fixed_effects_two_way %>% augment(final)
