@@ -11,6 +11,14 @@ library(PerformanceAnalytics)
 dat <- read_csv("full_data.csv") %>% 
   filter(curcdq == "USD")
 
+dat <- dat %>% mutate(gsector = as.factor(gsector))
+
+codes <- read_csv("gics_codes.csv")
+codes <- codes %>% mutate(Code = as.factor(Code))
+
+dat <- dat %>% left_join(codes, by = c("gsector" = "Code"))
+dat <- dat %>% mutate(sector = Name) 
+
 #clean data
 
 #change str()
@@ -45,7 +53,7 @@ dat <- dat %>% mutate(year = as.numeric(year),
 
 #for analysis
 final <- dat %>% select(cashflow, book_value, dividends_per_share, price,
-                        tic, year, quarter) %>%
+                        tic, year, quarter, sector) %>%
   filter(!is.na(cashflow)) %>% filter(!is.na(book_value)) %>% filter(!is.na(dividends_per_share)) %>%
   filter(!is.na(price)) %>% filter(!is.na(year))
 rm(dat)

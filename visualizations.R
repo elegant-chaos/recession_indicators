@@ -138,6 +138,30 @@ for_divergence %>%
 
 ggsave("faang_stocks_divergence_dist.jpg")
 
-# Plots for different sectors go here
+# Divergence by sector
+for_divergence %>% filter(!is.na(sector)) %>% group_by(sector, year) %>% 
+  summarise(mean_divergence = mean(divergence)) %>% ungroup() %>%
+  ggplot() + geom_point(aes(x = year, y = mean_divergence, color = sector)) +
+  geom_line(aes(x = year, y = mean_divergence, color = sector)) +
+  xlab("Year") +
+  ylab("Mean Divergence Rate") +
+  ggtitle("Divergence Rate by Sector") +
+  theme_economist_white()
+ggsave("all_sectors_divergence.jpg")
+
+# Divergence for real estate
+for_divergence %>% filter(!is.na(sector)) %>% filter(sector == "Real Estate") %>%
+  group_by(sector, year) %>% 
+  summarise(mean_divergence = mean(divergence)) %>% ungroup() %>%
+  ggplot() + geom_point(aes(x = year, y = mean_divergence), color = "#C77CFF") +
+  geom_line(aes(x = year, y = mean_divergence), color = "purple") +
+  xlab("Year") +
+  ylab("Mean Divergence Rate") +
+  ggtitle("Real Estate Sector Divergence Rate") +
+  theme_economist_white() + ylim(-0.5,1.0)
+ggsave("real_estate_divergence.jpg")
+
+
+
 
   
