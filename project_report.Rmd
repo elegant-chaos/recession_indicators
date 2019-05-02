@@ -5,6 +5,8 @@ date: "4/15/2019"
 output:
   pdf_document: default
   html_document: default
+header-includes:
+- \usepackage{placeins}
 ---
 
 # Abstract
@@ -15,10 +17,26 @@ Our data source is ____. Description of variables. Give relevant definitions, co
 
 # Methodology
 Describe models. Include table from office hours. 
-Note results from using two different coarseness levels for time variable (quarterly and yearly). Highlight that this is another contribution from us. 
 Note addition of indicator var for zero dividend. Highlight that this is a design choice on our part, and that it differs from the paper.
 
 $$ln(price_{it}) = \beta_0 + \beta_1ln(dividends_{it}) + \beta_2\mathbb{I}(dividends = 0) + \beta_3ln(bookvalue_{it}) + \beta_4ln(cashflow_{it}) + \mu_{i} + \gamma_t + \epsilon_{it}$$
+
+# Model Table
+\begin{table}[!h]
+\caption{$\mu$ and $\tau$ for All Tested Models}
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+ Model &  $\mu$ &  $\tau$ \\\hline
+ Pooled \hspace{1mm} OLS &  0 & 0 \\
+ Individual \hspace{1mm} Fixed \hspace{1mm} Effects & Fixed \hspace{1mm} Effect & 0 \\
+ Time \hspace{1mm} Effects & 0 & Fixed \hspace{1mm} Effect  \\
+ Two-Way \hspace{1mm} Fixed & 0 & Fixed \hspace{1mm} Effect \\
+ Individual \hspace{1mm} Random & Random & 0 \\
+ Time \hspace{1mm} Random & 0 & Random \\
+ Two-Way \hspace{1mm} Random & Random & Random \\\hline
+\end{tabular}
+\end{table}
 
 # Findings
 Which model is most significant? Did we replicate what the paper reported? What did we learn from our extension of the model to more recent data? 
