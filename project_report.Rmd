@@ -10,6 +10,8 @@ header-includes:
 - \usepackage{placeins}
 ---
 
+NOTE TO ERINA: ALL CAPS ISN'T YELLING AT YOU. THAT'S HOW I MAKE NOTES TO MYSELF IN THESE DOCS SO THAT I SEE THEM. THEY ARE NOTES YOU CAN ADDRESS OR I CAN ADDRESS. SORRY BECAUSE THEY DO SOUND LIKE YELLING WHEN YOU READ THEM LOL
+
 # Abstract
 Recreate the paper, describe. Extend analysis through current year. Summarize findings. 
 
@@ -21,15 +23,15 @@ Our data source is ____. Description of variables. Give relevant definitions, co
 Our data is sourced from Factset. The quarterly fundamental indicators (i.e. `cash and short-term investments`, `dividends per share`, and `carrying values`) and `share price` from 2003 to 2019 were used. The `share price` was determined by taking the stocks' closing prices of the final day in the quarter. Finally, we added a new binary variable to our data set based on `dividends per share` based on our initial data exploration. We noticed that many companies' quarterly data had dividends of 0. Therefore, `dividends = 0` simply indicated whether that instance of company fundamental data had a dividend of 0 or not. Each row consisted of one company's fundamentals data for a specific quarter at a certain year, and any rows with any of the fundamental indicators of the share price missing were omitted, hich ultimately changed our total instances from 254,764 to 161,544. Our final data set included 5,727 U.S companies in 11 sectors (i.e. industrials, financials, IT, Utilities, Consumer Discretionary, Health Care, Energy, Materials, Real Estate, Consumer Staples and Telecommunications). 184 companies did not have an sector associated in the data. 
 
 The fundamental indicators give valuable information about stocks. `Cash and short-term investments` show the amount of liquid assets a company has. Liquid assets are important to consider because it shows how much the company has that can be quickly converted to cash in the event of something happening. `Dividends per share` is the amount in dividends that a firm pays out to shareholders. Finally, the `carrying value`, which is also known as the book value, shows the stock's market value and how much shareholders would receive in the event that the company was liquidated. It is found by subtracting the company's total liabilities from its assets, and can be a good indicator for investors when making decisions; it gives a sense of whether a stock is being overvalued or undervalued. For example, comparing the price at which the stock is trading at and its `carrying value` may play a role in whether to buy or sell the stock. These 3 indicators are often used to evaluate company fundamentals.
->>>>>>> 04ae10a198a0e2754a61f1f1e0db51ef71939b4e
 
-# Methodology
-Describe models. Include table from office hours. 
-Note addition of indicator var for zero dividend. Highlight that this is a design choice on our part, and that it differs from the paper.
+NOTE ON DATA: NEED TO ADDRESS THE HANDLING OF TIME. WE USED IT AS A DISCRETE VARIABLE. COLLAPSED OVER FOUR QUARTERS INTO SINGLE POINT FOR EACH YEAR. ALSO NEED TO MENTION THAT 2019 ONLY CONTAINS 1 QUARTER AT THE TIME OF THE STUDY. ALSO, WE NEED TO CHECK IF WE HAVE ALL FOUR QUARTERS FOR 2003 AND IF WE FILTERED OUT 2003 FROM THE DATA BEFORE MODELING IF WE DON'T HAVE 4 QUARTERS. I HONESTLY DON'T REMEMBER IF I DID THIS OR NOT WHEN MODELING BUT IT WOULD HAVE OCCURRED IN CLEAN_DATA.R OR DATA_EXPLORATION.R IF WE DON'T HAVE ALL 4 QUARTERS FOR 2013, WE SHOULD CONSIDER FILTERING IT OUT.
+
+# Models and Methodology
+Our study focuses on the exploration of a number of linear regression models to predict stock price from company fundamentals. We started with the base model:
 
 $$ln(price_{it}) = \beta_0 + \beta_1ln(dividends_{it}) + \beta_2\mathbb{I}(dividends = 0) + \beta_3ln(bookvalue_{it}) + \beta_4ln(cashflow_{it}) + \mu_{i} + \gamma_t + \epsilon_{it}$$
+In this model, $\mu_i$ indicates the company effects and $\tau_t$ indicates the discrete time effects. Then, we fit the models described in table one.  
 
-# Model Table
 \begin{table}[!h]
 \caption{$\mu$ and $\tau$ for All Tested Models}
 \centering
@@ -44,10 +46,16 @@ $$ln(price_{it}) = \beta_0 + \beta_1ln(dividends_{it}) + \beta_2\mathbb{I}(divid
  Time \hspace{1mm} Random & 0 & Random \\
  Two-Way \hspace{1mm} Random & Random & Random \\\hline
 \end{tabular}
-\end{table}
+\end{table}  
 
-# Findings
-Which model is most significant? Did we replicate what the paper reported? What did we learn from our extension of the model to more recent data? 
+We used F-tests to assess the pooled ols and fixed effects model performance, likelihood ratio tests to compare the pooled ols and fixed effects models, and Hausman Tests to compare the fixed and random effects models. In all cases, we obtained significant p-values indicating that the fixed effects models out-performed the pooled ols model and the random effects model. The best model overall was the fixed effect model with time and company intercepts included. These results replicate the results obtained in our source paper, despite the fact that our models were built with many more years of data. FIX THIS STATEMENT IF THE HAUSMAN TEST YOU JUST GOT WORKING DOESN'T SHOW THE SAME RESULTS OBTAINED IN THE PAPER.
+
+# Divergence Rate  
+
+The overarching research question of the paper we replicate here is not about building the best model given the data (although that step is important). Instead, the research question is about using a model that accurately describes stock prices to notice anomalies in the stock market. For this reason, the authors of the paper chose to use 
+
+
+# Findings Summary? (Do we need this section? Unclear at this point.)
 
 # Limitations & Future Work
 
