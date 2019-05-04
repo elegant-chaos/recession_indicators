@@ -13,10 +13,14 @@ header-includes:
 # Abstract
 Recreate the paper, describe. Extend analysis through current year. Summarize findings. 
 
-The purpose of this project is to see what the differences between company fundamentals and share prices can tell us about economic recessions. We used the fundamental indicators of `dividends per share`, ``, and `carrying value` to fit out model and fit the individual fixed effects model. Then, we found the divergence rate from the actual share price. By looking at the divergence rates, we were able to see that there was a positive deviation between the company fundamentals and share prices right before a recession (i.e. overvalued during the years leading up to the recession in 2008) and a negative deviation during the recession (i.e. undervalued in 2008). Finally, we look at specific markets and market anomalies.
+The purpose of this project is to see what the differences between company fundamentals and share prices can tell us about economic recessions. We replacated the results from "Stock Market Market Crash of 2008: an empirical study of the deviation of share prices from company fundamentals" by Taisei Kaizoji and Michiko Miyano. We used the fundamental indicators of `cash and short-term investments`, `dividends per share`, and `carrying value` to fit out model and fit the individual fixed effects model. Then, we found the divergence rate from the actual share price. By looking at the divergence rates, we were able to see that there was a positive deviation between the company fundamentals and share prices right before a recession (i.e. overvalued during the years leading up to the recession in 2008) and a negative deviation during the recession (i.e. undervalued in 2008). Finally, we look at specific markets and market anomalies. 
 
 # Data
 Our data source is ____. Description of variables. Give relevant definitions, context, etc.
+
+Our data is sourced from Factset. The quarterly fundamental indicators (i.e. `cash and short-term investments`, `dividends per share`, and `carrying values`) and `share price` from 2003 to 2019 were used. The `share price` was determined by taking the stocks' closing prices of the final day in the quarter. Finally, we added a new binary variable to our data set based on `dividends per share` based on our initial data exploration. We noticed that many companies' quarterly data had dividends of 0. Therefore, `dividends = 0` simply indicated whether that instance of company fundamental data had a dividend of 0 or not. Each row consisted of one company's fundamentals data for a specific quarter at a certain year, and any rows with any of the fundamental indicators of the share price missing were omitted, hich ultimately changed our total instances from 254,764 to 161,544. Our final data set included 5,727 U.S companies in 11 sectors (i.e. industrials, financials, IT, Utilities, Consumer Discretionary, Health Care, Energy, Materials, Real Estate, Consumer Staples and Telecommunications). 184 companies did not have an sector associated in the data. 
+
+The fundamental indicators give valuable information about stocks. `Cash and short-term investments` show the amount of liquid assets a company has. Liquid assets are important to consider because it shows how much the company has that can be quickly converted to cash in the event of something happening. `Dividends per share` is the amount in dividends that a firm pays out to shareholders. Finally, the `carrying value`, which is also known as the book value, shows the stock's market value and how much shareholders would receive in the event that the company was liquidated. It is found by subtracting the company's total liabilities from its assets, and can be a good indicator for investors when making decisions; it gives a sense of whether a stock is being overvalued or undervalued. For example, comparing the price at which the stock is trading at and its `carrying value` may play a role in whether to buy or sell the stock. These 3 indicators are often used to evaluate company fundamentals.
 
 # Methodology
 Describe models. Include table from office hours. 
@@ -43,6 +47,11 @@ $$ln(price_{it}) = \beta_0 + \beta_1ln(dividends_{it}) + \beta_2\mathbb{I}(divid
 
 # Findings
 Which model is most significant? Did we replicate what the paper reported? What did we learn from our extension of the model to more recent data? 
+
+# Limitations & Future Work
+
+# Resources
+
 
 # Plots
 Reproduce the plots in the paper. Note differences and extend to new years. Explore new plots, see if we can come up with anything more descriptive. 
