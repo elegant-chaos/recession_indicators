@@ -18,6 +18,8 @@ The purpose of this project is to see what the differences between company funda
 # Data
 Our data source is ____. Description of variables. Give relevant definitions, context, etc.
 
+# Models
+
 # Methodology
 Describe models. Include table from office hours. 
 Note addition of indicator var for zero dividend. Highlight that this is a design choice on our part, and that it differs from the paper.
