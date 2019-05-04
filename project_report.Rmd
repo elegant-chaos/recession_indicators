@@ -1,7 +1,8 @@
 ---
 title: "Final Report"
+subtitle: "STAT 697D"
 author: "Jenn Halbleib & Erina Fukuda"
-date: "4/15/2019"
+date: "5/09/2019"
 output:
   pdf_document: default
   html_document: default
@@ -11,6 +12,8 @@ header-includes:
 
 # Abstract
 Recreate the paper, describe. Extend analysis through current year. Summarize findings. 
+
+The purpose of this project is to see what the differences between company fundamentals and share prices can tell us about economic recessions. We used the fundamental indicators of `dividends per share`, ``, and `carrying value` to fit out model and fit the individual fixed effects model. Then, we found the divergence rate from the actual share price. By looking at the divergence rates, we were able to see that there was a positive deviation between the company fundamentals and share prices right before a recession (i.e. overvalued during the years leading up to the recession in 2008) and a negative deviation during the recession (i.e. undervalued in 2008). Finally, we look at specific markets and market anomalies.
 
 # Data
 Our data source is ____. Description of variables. Give relevant definitions, context, etc.
