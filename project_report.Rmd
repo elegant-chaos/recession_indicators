@@ -67,9 +67,18 @@ The two figures below display the time effects coefficients from model and the m
 
 ![Figure #.](mean_divergence_rate_by_year.jpg)
 
-![Figure #.](true_vs_predicted.jpg)
+# Findings Summary? (Do we need this section? Unclear at this point.)
+Which model is most significant? Did we replicate what the paper reported? What did we learn from our extension of the model to more recent data? 
+Of the models we tested, we found that the Two-Way Fixed Effects had the best R-squared of abc. We can see in Figure abc. that there is time effect. However, we decided to use the Individual Fixed Effects, which had a R-squared of abc, 0.2 less than the former model instead of including the time effects as well, because we are interested in the company fundamental indicators alone showing the time effect. Therefore, the Individual Fixed Effect is more suited for our goals. This is the same decision as the authors of the paper, and we
 
-![Figure #.](time_fixed_effects_coefficients.jpg)
+JUST SAW YOUR NOTE IN PARENTHESIS (WAS WORKING ON THIS BEFORE I PULLED). WE MIGHT NEED TO SWITCH THE ORDER
+
+RESPONSE: I LITERALLY EXPLAIN THIS EXACT PARAGRAPH YOU WROTE IN THE MODELS SECTION. 
+
+![Figure #.](true_vs_predicted.jpg) 
+
+# LET'S INCLUDE RESIDUALS PLOTS IN THE APPENDIX
+
 
 # Applications NOT SURE IF GOOD TITLE
 
@@ -106,10 +115,13 @@ In the future, we can change several aspecs of our project to look for other int
 
 # Plots
 
+
 Reproduce the plots in the paper. Note differences and extend to new years. Explore new plots, see if we can come up with anything more descriptive. 
 
+# Sources
 
-#Appendix  
+
+# Appendix  
 
 This project has an extensive codebase, which may be accessed on github. (https://github.com/elegant-chaos/recession_indicators) Please note: the database we sourced our data from has usage restrictions, so the repository does not include our dataset. 
 
