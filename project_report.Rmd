@@ -12,6 +12,8 @@ header-includes:
 
 NOTE TO ERINA: ALL CAPS ISN'T YELLING AT YOU. THAT'S HOW I MAKE NOTES TO MYSELF IN THESE DOCS SO THAT I SEE THEM. THEY ARE NOTES YOU CAN ADDRESS OR I CAN ADDRESS. SORRY BECAUSE THEY DO SOUND LIKE YELLING WHEN YOU READ THEM LOL
 
+NOTE TO JENN: SOUNDS GOOD! WILL DO THE SAME. ALSO, I ADD "abc" WHEREVER THINGS NEED TO BE FILLED IN/WORKED ON LATER ON JUST FYI
+
 # Abstract
 Recreate the paper, describe. Extend analysis through current year. Summarize findings. 
 
@@ -20,7 +22,7 @@ The purpose of this project is to see what the differences between company funda
 # Data
 Our data source is ____. Description of variables. Give relevant definitions, context, etc.
 
-Our data is sourced from Factset. The quarterly fundamental indicators (i.e. `cash and short-term investments`, `dividends per share`, and `carrying values`) and `share price` from 2003 to 2019 were used. The `share price` was determined by taking the stocks' closing prices of the final day in the quarter. Finally, we added a new binary variable to our data set based on `dividends per share` based on our initial data exploration. We noticed that many companies' quarterly data had dividends of 0. Therefore, `dividends = 0` simply indicated whether that instance of company fundamental data had a dividend of 0 or not. Each row consisted of one company's fundamentals data for a specific quarter at a certain year, and any rows with any of the fundamental indicators of the share price missing were omitted, hich ultimately changed our total instances from 254,764 to 161,544. Our final data set included 5,727 U.S companies in 11 sectors (i.e. industrials, financials, IT, Utilities, Consumer Discretionary, Health Care, Energy, Materials, Real Estate, Consumer Staples and Telecommunications). 184 companies did not have an sector associated in the data. 
+Our data is sourced from Factset. The quarterly fundamental indicators (i.e. `cash and short-term investments`, `dividends per share`, and `carrying values`) and `share price` from 2003 to 2019 were used. Time was treated as a discrete variable where `share price` was determined by taking the stocks' closing prices of the final day in the quarter to represent that quarter. It is importnat to note that 2019 contains data for only the first quarter. Additionally, we added a new binary variable to our data set based on `dividends per share` based on our initial data exploration. We noticed that many companies' quarterly data had dividends of 0. Therefore, `dividends = 0` simply indicated whether that instance of company fundamental data had a dividend of 0 or not. Each row consisted of one company's fundamentals data for a specific quarter at a certain year, and any rows with any of the fundamental indicators of the share price missing were omitted, hich ultimately changed our total instances from 254,764 to 161,544. Our final data set included 5,727 U.S companies in 11 sectors (i.e. industrials, financials, IT, Utilities, Consumer Discretionary, Health Care, Energy, Materials, Real Estate, Consumer Staples and Telecommunications). 184 companies did not have a sector associated in the data.
 
 The fundamental indicators give valuable information about stocks. `Cash and short-term investments` show the amount of liquid assets a company has. Liquid assets are important to consider because it shows how much the company has that can be quickly converted to cash in the event of something happening. `Dividends per share` is the amount in dividends that a firm pays out to shareholders. Finally, the `carrying value`, which is also known as the book value, shows the stock's market value and how much shareholders would receive in the event that the company was liquidated. It is found by subtracting the company's total liabilities from its assets, and can be a good indicator for investors when making decisions; it gives a sense of whether a stock is being overvalued or undervalued. For example, comparing the price at which the stock is trading at and its `carrying value` may play a role in whether to buy or sell the stock. These 3 indicators are often used to evaluate company fundamentals.
 
@@ -55,12 +57,64 @@ We used F-tests to assess the pooled ols and fixed effects model performance, li
 The overarching research question of the paper we replicate here is not about building the best model given the data (although that step is important). Instead, the research question is about using a model that accurately describes stock prices to notice anomalies in the stock market. For this reason, the authors of the paper chose to use 
 
 
+JENN SHOULD WE ADD THIS QUOTE FROM THE PAPER?? "These three indicators are commonly used by financial professionals
+and investors in fundamental analysis as a tool for identifying the divergence of
+share price in the market from the intrinsic value of a company."
+
+![Figure #.](mean_divergence_rate_by_year.jpg)
+
 # Findings Summary? (Do we need this section? Unclear at this point.)
+Which model is most significant? Did we replicate what the paper reported? What did we learn from our extension of the model to more recent data? 
+Of the models we tested, we found that the Two-Way Fixed Effects had the best R-squared of abc. We can see in Figure abc. that there is time effect. However, we decided to use the Individual Fixed Effects, which had a R-squared of abc, 0.2 less than the former model instead of including the time effects as well, because we are interested in the company fundamental indicators alone showing the time effect. Therefore, the Individual Fixed Effect is more suited for our goals. This is the same decision as the authors of the paper, and we
+
+JUST SAW YOUR NOTE IN PARENTHESIS (WAS WORKING ON THIS BEFORE I PULLED). WE MIGHT NEED TO SWITCH THE ORDER
+
+![Figure #.](true_vs_predicted.jpg)
+
+![Figure #.](time_fixed_effects_coefficients.jpg)
+
+# Applications NOT SURE IF GOOD TITLE
+
+We look at the divergence distributions for the years from 2003 to 2019. Figure abc. is a graph with all years. Figure abc. and Figure abc. shows the distributions for the periods of 2006 to 2008, 2009 to 2013 and 2015 to 2019, since the graph with all years can be too much at once. Between 2006 and 2008, we can see that the 2006 and 2007's distributions are centered above 0; in other words, the stock prices are being overvalued. On the other hand, in 2008 the distribution is centered below 0; in other words, the stock prices are being undervalued. This trend of a shift in distribution centers can be seen in the other two graphs as well. In Figure abc., it is important to note that 2019 only has data for 1 quarter; therefore, the distributions may shift as more data is included from the remaining quarters. However, there seems to be a shift of stocks being overvalued, which may be an indication of another recession.
+
+![Figure #.](divergence_dist_all_year.jpg)
+
+![Figure #.](divergence_distribution_2006_to_2008.jpg)
+
+![Figure #.](divergence_dist_2009_to_2013.jpg)
+
+![Figure #.](divergence_since_2015.jpg)
+
+We also look at divergence rates by sector to see if there are differences in the trends between them. We can see in Figure abc. as well that there is a positive mean divergence rate before the years leading up to the Great Recession and then the graph goes deeply below 0  once it hits. The trend seems to be rising again as we approach 2019 and again, while we must be weary of the fact that we only have 1 quarter's worth of data so far, we seem to be headed towards positive divergence rate again as well.
+
+JENN PLEASE CHECK THIS PART + ADD THE PART ON OIL + HOUSING
+
+![Figure #.](all_sectors_divergence.jpg)
+
+![Figure #.](real_estate_divergence.jpg)
+
 
 # Limitations & Future Work
 
-# Resources
+The data we used is not the same as the one used in the paper, which had 7,796 international companies between the years 2004 to 2013 from the OSIRIS database. Our data was filtered for companies that showed share price in USD, and was filtered out for rows that were not missing in any of the fundamental indicators and response variable. However, as shown earlier, the results we had were similar to that of the paper and the graphs were reproducible as well. Our model performance was also high.
 
+INCLUDE LIMITATION
+
+In the future, we would like to try several other models to determine if we can have better performance and accuracy in company fundamentals. In addition, seeing the performance of other time periods would also be interesting. Finally, our data only included U.S companies; however, including international companies can be interesting to see as well.
+
+WHAT OTHER FUTURE WORKS???
 
 # Plots
+
 Reproduce the plots in the paper. Note differences and extend to new years. Explore new plots, see if we can come up with anything more descriptive. 
+
+
+# Resources
+
+Kaizoji, Taisei, and Michiko Miyano. "Stock Market Market Crash of 2008: an empirical study of the deviation of share prices from company fundamentals." arXiv preprint arXiv:1607.03205 (2016).
+
+#Appendix
+
+
+
+
