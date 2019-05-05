@@ -48,11 +48,14 @@ In this model, $\mu_i$ indicates the company effects and $\tau_t$ indicates the 
 \end{tabular}
 \end{table}  
 
-We used F-tests to assess the pooled ols and fixed effects model performance, likelihood ratio tests to compare the pooled ols and fixed effects models, and Hausman Tests to compare the fixed and random effects models. In all cases, we obtained significant p-values indicating that the fixed effects models out-performed the pooled ols model and the random effects model. The best model overall was the fixed effect model with time and company intercepts included. These results replicate the results obtained in our source paper, despite the fact that our models were built with many more years of data. FIX THIS STATEMENT IF THE HAUSMAN TEST YOU JUST GOT WORKING DOESN'T SHOW THE SAME RESULTS OBTAINED IN THE PAPER.
+We used F-tests to assess the pooled ols and fixed effects model performance, likelihood ratio tests to compare the pooled ols and fixed effects models, and Hausman Tests to compare the fixed and random effects models. In all cases, we obtained p-values indicating that the fixed effects models out-performed the pooled ols model and the random effects model. The best model overall was the fixed effect model with time and company intercepts included. These results replicate the results obtained in our source paper, despite the fact that our models were built with many more years of data. FIX THIS STATEMENT IF THE HAUSMAN TEST YOU JUST GOT WORKING DOESN'T SHOW THE SAME RESULTS OBTAINED IN THE PAPER.
 
 # Divergence Rate  
 
-The overarching research question of the paper we replicate here is not about building the best model given the data (although that step is important). Instead, the research question is about using a model that accurately describes stock prices to notice anomalies in the stock market. For this reason, the authors of the paper chose to use 
+The overarching research question of the paper we replicate here is not about building the best model given the data (although that step is important). Instead, the research question is about using a model that accurately describes stock prices to notice anomalies in the stock market. For this reason, the authors of the paper chose to use the fixed effects model with only company effects. This works because we can assume that, in a perfect market, company fundamentals will always compose the stock price in an additive way with no time effects. Then, we can use the predictions from our model to notice when stocks are over or under valued in the market. Our source paper proposes a metric for this purpose named divergence rate defined as follows:
+
+$$D_{it} = ln(Y_{it}) - ln(\tilde{Y}_{it})$$  
+In this formula, $Y_{it}$ is the observed stock price for company $i$ at time $t$ and $\tilde{Y}_{it}$ is the model's prediction for the stock price of company $i$ at time $t$.
 
 
 # Findings Summary? (Do we need this section? Unclear at this point.)
