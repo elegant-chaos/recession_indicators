@@ -26,7 +26,11 @@ Our data is sourced from Factset. The quarterly fundamental indicators (i.e. `ca
 
 The fundamental indicators give valuable information about stocks. `Cash and short-term investments` show the amount of liquid assets a company has. Liquid assets are important to consider because it shows how much the company has that can be quickly converted to cash in the event of something happening. `Dividends per share` is the amount in dividends that a firm pays out to shareholders. Finally, the `carrying value`, which is also known as the book value, shows the stock's market value and how much shareholders would receive in the event that the company was liquidated. It is found by subtracting the company's total liabilities from its assets, and can be a good indicator for investors when making decisions; it gives a sense of whether a stock is being overvalued or undervalued. For example, comparing the price at which the stock is trading at and its `carrying value` may play a role in whether to buy or sell the stock. These 3 indicators are often used to evaluate company fundamentals.
 
-NOTE ON DATA: NEED TO ADDRESS THE HANDLING OF TIME. WE USED IT AS A DISCRETE VARIABLE. COLLAPSED OVER FOUR QUARTERS INTO SINGLE POINT FOR EACH YEAR. ALSO NEED TO MENTION THAT 2019 ONLY CONTAINS 1 QUARTER AT THE TIME OF THE STUDY. ALSO, WE NEED TO CHECK IF WE HAVE ALL FOUR QUARTERS FOR 2003 AND IF WE FILTERED OUT 2003 FROM THE DATA BEFORE MODELING IF WE DON'T HAVE 4 QUARTERS. I HONESTLY DON'T REMEMBER IF I DID THIS OR NOT WHEN MODELING BUT IT WOULD HAVE OCCURRED IN CLEAN_DATA.R OR DATA_EXPLORATION.R IF WE DON'T HAVE ALL 4 QUARTERS FOR 2013, WE SHOULD CONSIDER FILTERING IT OUT.
+JENN SHOULD WE ADD THIS QUOTE FROM THE PAPER?? "These three indicators are commonly used by financial professionals
+and investors in fundamental analysis as a tool for identifying the divergence of
+share price in the market from the intrinsic value of a company." A: SURE, IF WE WANT TO. I THINK IT BELONGS IN THE DATA SECTION. 
+
+NOTE ON DATA: NEED TO ADDRESS THE HANDLING OF TIME. WE USED IT AS A DISCRETE VARIABLE. COLLAPSED OVER FOUR QUARTERS INTO SINGLE POINT FOR EACH YEAR. ALSO NEED TO MENTION THAT 2019 ONLY CONTAINS 1 QUARTER AT THE TIME OF THE STUDY.
 
 # Models and Methodology
 Our study focuses on the exploration of a number of linear regression models to predict stock price from company fundamentals. We started with the base model:
@@ -50,27 +54,30 @@ In this model, $\mu_i$ indicates the company effects and $\tau_t$ indicates the 
 \end{tabular}
 \end{table}  
 
-We used F-tests to assess the pooled ols and fixed effects model performance, likelihood ratio tests to compare the pooled ols and fixed effects models, and Hausman Tests to compare the fixed and random effects models. In all cases, we obtained p-values indicating that the fixed effects models out-performed the pooled ols model and the random effects model. The best model overall was the fixed effect model with time and company intercepts included. These results replicate the results obtained in our source paper, despite the fact that our models were built with many more years of data. FIX THIS STATEMENT IF THE HAUSMAN TEST YOU JUST GOT WORKING DOESN'T SHOW THE SAME RESULTS OBTAINED IN THE PAPER.
+We used F-tests to assess the pooled ols and fixed effects model performance, likelihood ratio tests to compare the pooled ols and fixed effects models, and Hausman Tests to compare the fixed and random effects models. In all cases, we obtained p-values indicating that the fixed effects models out-performed the pooled ols model and the random effects model. The best model overall was the fixed effect model with time and company intercepts included. These results replicate the results obtained in our source paper, even though our models were built with many more years of data. 
 
 # Divergence Rate  
 
 The overarching research question of the paper we replicate here is not about building the best model given the data (although that step is important). Instead, the research question is about using a model that accurately describes stock prices to notice anomalies in the stock market. For this reason, the authors of the paper chose to use the fixed effects model with only company effects. This works because we can assume that, in a perfect market, company fundamentals will always compose the stock price in an additive way with no time effects. Then, we can use the predictions from our model to notice when stocks are over or under valued in the market. Our source paper proposes a metric for this purpose named divergence rate defined as follows:
 
 $$D_{it} = ln(Y_{it}) - ln(\tilde{Y}_{it})$$  
-In this formula, $Y_{it}$ is the observed stock price for company $i$ at time $t$ and $\tilde{Y}_{it}$ is the model's prediction for the stock price of company $i$ at time $t$.
 
+In this formula, $Y_{it}$ is the observed stock price for company $i$ at time $t$ and $\tilde{Y}_{it}$ is the model's prediction for the stock price of company $i$ at time $t$. The divergence rate indicates how over or undervalued a company's stock is given that company's fundamental value.   
 
-JENN SHOULD WE ADD THIS QUOTE FROM THE PAPER?? "These three indicators are commonly used by financial professionals
-and investors in fundamental analysis as a tool for identifying the divergence of
-share price in the market from the intrinsic value of a company."
+The two figures below display the time effects coefficients from model and the mean divergence rate by year. We can see that, as expected, these two figures track each other. While it feels counterintuitive to leave an informative variable out of the model, in this case doing so gives us a powerful tool. Now, we can track in real time, how over or undervalued the market is as a whole. Our sample only contains one recession (2008-2009), so it is less powerful than a dataset that contains all known recessions. However, we can look here to seek potential recession indicating trends. In the years leading up to the recession, the market became overvalued. And then, in 2008, the recession led to an undervaluing of the market as a whole. Looking to the current year, we can see that 2019 the market appears more overvalued than at any other point in the dataset. Other recession indictors outside our model have also appeared recently, including the inversion of the bond yield curve, which has preceded every recession on record. We interpret the overvaluing of 2019 by our indicated by our model cautiously, since we only have one quarter of 2019 in the data so far, But, this trend matches our assertion about the overvaluing of the market being related to a recession. 
+
+![Figure #.](time_fixed_effects_coefficients.jpg)
 
 ![Figure #.](mean_divergence_rate_by_year.jpg)
+
 
 # Findings Summary? (Do we need this section? Unclear at this point.)
 Which model is most significant? Did we replicate what the paper reported? What did we learn from our extension of the model to more recent data? 
 Of the models we tested, we found that the Two-Way Fixed Effects had the best R-squared of abc. We can see in Figure abc. that there is time effect. However, we decided to use the Individual Fixed Effects, which had a R-squared of abc, 0.2 less than the former model instead of including the time effects as well, because we are interested in the company fundamental indicators alone showing the time effect. Therefore, the Individual Fixed Effect is more suited for our goals. This is the same decision as the authors of the paper, and we
 
 JUST SAW YOUR NOTE IN PARENTHESIS (WAS WORKING ON THIS BEFORE I PULLED). WE MIGHT NEED TO SWITCH THE ORDER
+
+RESPONSE: I LITERALLY EXPLAIN THIS EXACT PARAGRAPH YOU WROTE IN THE MODELS SECTION. 
 
 ![Figure #.](true_vs_predicted.jpg)
 
@@ -91,6 +98,8 @@ We look at the divergence distributions for the years from 2003 to 2019. Figure 
 We also look at divergence rates by sector to see if there are differences in the trends between them. We can see in Figure abc. as well that there is a positive mean divergence rate before the years leading up to the Great Recession and then the graph goes deeply below 0  once it hits. The trend seems to be rising again as we approach 2019 and again, while we must be weary of the fact that we only have 1 quarter's worth of data so far, we seem to be headed towards positive divergence rate again as well.
 
 JENN PLEASE CHECK THIS PART + ADD THE PART ON OIL + HOUSING
+
+
 
 ![Figure #.](all_sectors_divergence.jpg)
 
