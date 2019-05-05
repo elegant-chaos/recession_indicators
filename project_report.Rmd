@@ -64,7 +64,7 @@ $$D_{it} = ln(Y_{it}) - ln(\tilde{Y}_{it})$$
 
 In this formula, $Y_{it}$ is the observed stock price for company $i$ at time $t$ and $\tilde{Y}_{it}$ is the model's prediction for the stock price of company $i$ at time $t$. The divergence rate indicates how over or undervalued a company's stock is given that company's fundamental value.   
 
-The two figures below display the time effects coefficients from model and the mean divergence rate by year. We can see that, as expected, these two figures track each other. While it feels counterintuitive to leave an informative variable out of the model, in this case doing so gives us a powerful tool. Now, we can track in real time, how over or undervalued the market is as a whole. Our sample only contains one recession (2008-2009), so it is less powerful than a dataset that contains all known recessions. However, we can look here to seek potential recession indicating trends. In the years leading up to the recession, the market became overvalued. And then, in 2008, the recession led to an undervaluing of the market as a whole. Looking to the current year, we can see that 2019 the market appears more overvalued than at any other point in the dataset. Other recession indictors outside our model have also appeared recently, including the inversion of the bond yield curve, which has preceded every recession on record. We interpret the overvaluing of 2019 by our indicated by our model cautiously, since we only have one quarter of 2019 in the data so far, But, this trend matches our assertion about the overvaluing of the market being related to a recession. 
+The two figures below display the time effects coefficients from model and the mean divergence rate by year. We can see that, as expected, these two figures track each other. While it feels counterintuitive to leave an informative variable out of the model, in this case doing so gives us a powerful tool. Now, we can track in real time, how over or undervalued the market is as a whole. Our sample only contains one recession (2008-2009), so it is less powerful than a dataset that contains all known recessions. However, we can look here to seek potential recession indicating trends. In the years leading up to the recession, the market became overvalued. And then, in 2008, the recession led to an undervaluing of the market as a whole. Looking to the current year, we can see that 2019 the market appears more overvalued than at any other point in the dataset. Other recession indictors outside our model have also appeared recently, including the inversion of the bond yield curve, which has preceded every recent recession. (SOURCE: NEED TO CREATE CITATION: https://www.clevelandfed.org/en/our-research/indicators-and-data/yield-curve-and-gdp-growth.aspx) We interpret the overvaluing of 2019 by our indicated by our model cautiously, since we only have one quarter of 2019 in the data so far. But, this trend matches our assertion about the overvaluing of the market serving as a potential recession indicator. 
 
 ![Figure #.](time_fixed_effects_coefficients.jpg)
 
@@ -112,9 +112,11 @@ The data we used is not the same as the one used in the paper, which had 7,796 i
 
 INCLUDE LIMITATION
 
-In the future, we would like to try several other models to determine if we can have better performance and accuracy in company fundamentals. In addition, seeing the performance of other time periods would also be interesting. Finally, our data only included U.S companies; however, including international companies can be interesting to see as well.
+In the future, we would like to try several other models to determine if we can have better performance and accuracy in company fundamentals. NOTE: WE HAVE GREAT PERFORMANCE SO I THINK WE SHOULD LEAVE THIS FIRST SENTENCE OUT. ALSO, WE MAKE AN ASSERTION THAT THESE VARIABLES SHOULD PREDICT MARKET VALUE PERFECTLY IN A PERFECT MARKET, SO THIS UNDERMINES OUR POINT.
 
-WHAT OTHER FUTURE WORKS???
+Looking forward, we could add to this work in several ways. First, our model only contains data from U.S. companies, since comparisions across currencies would have made the work of building this model more difficult. Normalizing across global currencies and including companies from markets outside the United States would likely improve the ability of this model to forecast recessions. Second, due to computational limitations, we did not include the entire history of the United States stock market. However, since the sample size of recessions is so small, including as many of them as possible in the model is important before drawing overarching conclusions about the validity of this model as a recession indicator. As of this work, the model only demonstrates that a high divergence rate may be related to an oncoming recession. Adding more recession samples might allow us to say that a high divergence rate is a likely recession indicator. 
+
+# Conclusion
 
 # Plots
 
@@ -125,8 +127,9 @@ Reproduce the plots in the paper. Note differences and extend to new years. Expl
 
 Kaizoji, Taisei, and Michiko Miyano. "Stock Market Market Crash of 2008: an empirical study of the deviation of share prices from company fundamentals." arXiv preprint arXiv:1607.03205 (2016).
 
-#Appendix
+#Appendix  
 
+This project has an extensive codebase, which may be accessed on github. (https://github.com/elegant-chaos/recession_indicators) Please note: the database we sourced our data from has usage restrictions, so the repository does not include our dataset. 
 
 
 
