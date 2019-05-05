@@ -82,9 +82,10 @@ JUST SAW YOUR NOTE IN PARENTHESIS (WAS WORKING ON THIS BEFORE I PULLED). WE MIGH
 
 RESPONSE: I LITERALLY EXPLAIN THIS EXACT PARAGRAPH YOU WROTE IN THE MODELS SECTION. 
 
-![Figure #.](true_vs_predicted.jpg)
+![Figure #.](true_vs_predicted.jpg) 
 
-![Figure #.](time_fixed_effects_coefficients.jpg)
+# LET'S INCLUDE RESIDUALS PLOTS IN THE APPENDIX
+
 
 # Applications NOT SURE IF GOOD TITLE
 
@@ -126,7 +127,7 @@ Looking forward, we could add to this work in several ways. First, our model onl
 Reproduce the plots in the paper. Note differences and extend to new years. Explore new plots, see if we can come up with anything more descriptive. 
 
 
-# Resources
+# Sources
 
 Kaizoji, Taisei, and Michiko Miyano. "Stock Market Market Crash of 2008: an empirical study of the deviation of share prices from company fundamentals." arXiv preprint arXiv:1607.03205 (2016).
 
