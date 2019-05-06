@@ -59,5 +59,9 @@ final <- dat %>% select(cashflow, book_value, dividends_per_share, price,
 rm(dat)
 #rm(prices)
 
+# Normalizing
 
+#final <- final %>% mutate_at(vars("cashflow", "book_value", "dividends_per_share", "price"), scale)
+
+# Normalizing made things down the road worse, not better. 
 

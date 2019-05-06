@@ -43,7 +43,7 @@ random_effects_companies = lmer(price_log ~ book_value_log + dividends_per_share
 summary(random_effects_companies)
 
 
-# Time Random Effects (Randome Effects for Year)
+# Time Random Effects (Random Effects for Year)
 random_effects_time = lmer(price_log ~ book_value_log + dividends_per_share_log +
                                   dividends_per_share_ind + cashflow_log + (1|year_factor), 
                                 data = final, REML = FALSE)
@@ -72,15 +72,33 @@ anova(random_effects_companies, random_effects_2_way) # sig difference
 anova(random_effects_2_way, fixed_effects_two_way) # sig difference
 
 # Overall best model: 2-way fixed effects
-# This makes sense since it's pretty unlikely the various company stock 
-# prices come from a normal distribution. The stock market is exponential and stock prices are long tailed.
+
+for_plm <- final %>% group_by(year, tic) %>% summarise(avg_price_log = mean(price_log),
+                                                    avg_book_value_log = mean(book_value_log),
+                                                    avg_dividends_log = mean(dividends_per_share_log), 
+                                                    avg_cashflow_log = mean(cashflow_log)) #%>%
+  mutate(avg_dividends_inc = ifelse(avg_dividends_log == 1, 1, 0)) %>% ungroup()
 
 # Confirm with Hausman test
-# This code doesn't work. I think we can skip it. 
-# Could also verify in a more machine learning way by do an analysis of the residuals
-#best_fixed <- plm(price_log ~ book_value_log + dividends_per_share_log +
-#                    dividends_per_share_ind + cashflow_log + year_factor + tic, data = final, model = "within")
-#best_random <- plm(price_log ~ book_value_log + dividends_per_share_log +
-#                     dividends_per_share_ind + cashflow_log + (1|tic) + (1|year_factor), data = final, model = "random")
 
-#phtest(best_fixed, best_random)
+best_fixed <- plm(avg_price_log ~ avg_book_value_log + avg_dividends_log +
+                    avg_dividends_inc + 
+                    avg_cashflow_log + tic + year, data = for_plm,
+                  index = c("tic", "year"), model = "within")
+best_random <- plm(avg_price_log ~ avg_book_value_log + avg_dividends_log +
+                     avg_dividends_inc + 
+                     avg_cashflow_log + tic + year, data = for_plm,
+                   index = c("tic", "year"), model = "random")
+
+phtest(best_fixed, best_random)
+
+# Analysis of residuals for fixed effects with companies only  
+
+load(file = "RDA_files/fixed_effects_companies.rda")
+ls()
+plot(fixed_effects_companies)
+
+# After analysis of residuals, trying model with normalized data
+
+
+

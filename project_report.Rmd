@@ -35,7 +35,7 @@ JENN IF YOU THINK WE ANSWERED ALL OF THESE PLEASE DELETE THE ABOVE. A: WE STILL 
 
 Our data is sourced from Factset. \cite{data} The quarterly fundamental indicators (i.e. `cash and short-term investments`, `dividends per share`, and `carrying values`) and `share price` from U.S companies between 2003 to 2019 were used. Time was treated as a discrete variable where `share price` was the stocks' closing prices of the final day in the quarter. It is important to note that 2019 contains data for only the first quarter, which may lead to exaggerated trends for 2019. Additionally, we added a new binary variable to our data set based on `dividends per share` which was a decision we made during our initial data exploration. We noticed that many companies' quarterly data had dividends of 0. Therefore, `dividends = 0` simply indicated whether that instance of company fundamental data had a dividend of 0 or not. This is not a variable in the paper [@kaizoji], and is specific to our project. Each row consisted of one company's quarterly data during the year, and rows with any of the fundamental indicators or share price missing were omitted. This ultimately changed our total instances from 254,764 to 161,544. Our final data set included 5,727 companies from 11 sectors (i.e. industrials, financials, IT, Utilities, Consumer Discretionary, Health Care, Energy, Materials, Real Estate, Consumer Staples and Telecommunications). 184 companies did not have a sector associated in the data.
 
-The fundamental indicators give valuable information about stocks. `Cash and short-term investments` show the amount of liquid assets a company has. Liquid assets are important to consider because it shows how much the company has that can be quickly converted to cash in the event of something happening. `Dividends per share` is the amount in dividends that a firm pays out to shareholders. \cite{dividend} Finally, the `carrying value`, which is also known as the book value, shows the stock's market value and how much shareholders would receive in the event that the company was liquidated. It is found by subtracting the company's total liabilities from total its assets, and can be a good indicator for investors when making decisions; it gives a sense of whether a stock is being overvalued or undervalued. For example, comparing the price at which the stock is trading at and its `carrying value` may play a role in investors' decisions to buy or sell the stock. \cite{bookvalue} "These three indicators are commonly used by financial professionals and investors in fundamental analysis as a tool for identifying the divergence of share price in the market from the intrinsic value of a company." \cite{kaizoji}
+The fundamental indicators give valuable information about stocks. `Cash and short-term investments` show the amount of liquid assets a company has. Liquid assets are important to consider because it shows how much the company has that can be quickly converted to cash in the event of something happening. `Dividends per share` is the amount in dividends that a firm pays out to shareholders. [@dividend] Finally, the `carrying value`, which is also known as the book value, shows the stock's market value and how much shareholders would receive in the event that the company was liquidated. It is found by subtracting the company's total liabilities from total its assets, and can be a good indicator for investors when making decisions; it gives a sense of whether a stock is being overvalued or undervalued. For example, comparing the price at which the stock is trading at and its `carrying value` may play a role in investors' decisions to buy or sell the stock. [@bookvalue] "These three indicators are commonly used by financial professionals and investors in fundamental analysis as a tool for identifying the divergence of share price in the market from the intrinsic value of a company." [@kaizoji]
 
 NOTE ON DATA: NEED TO ADDRESS THE HANDLING OF TIME. WE USED IT AS A DISCRETE VARIABLE. COLLAPSED OVER FOUR QUARTERS INTO SINGLE POINT FOR EACH YEAR. ALSO NEED TO MENTION THAT 2019 ONLY CONTAINS 1 QUARTER AT THE TIME OF THE STUDY.
 
@@ -85,13 +85,13 @@ The two figures below display the time effects coefficients from the two-way fix
 
 ### All Sectors  
 
-Breaking divergence down by sector gives a deeper look into market trends (see Figure ADD FIGURE NUMBER). This view reinforces the divergence rate as a metric to describe market behavior. Take the energy sector as an example. Leading up to the recession, the Iraq War caused a global oil shortage. (ADD THIS TO OUR CITATIONS:  https://www.brookings.edu/research/iraqs-oil-sector-one-year-after-liberation/) In response, oil prices rose significantly. Figure ADD FIGURE NUMBER shows the market response in the energy sector to the increase in oil prices over the years 2005 to 2008. During the recession, the energy sector remained overvalued when all other sectors became undervalued in 2008. But, as the region began to recover in the following years (ADD THIS TO OUR CITATIONS: https://jia.sipa.columbia.edu/war-oil-price-cycle), the valuation of the energy sector normalized. Seeing real world events reflected in the divergence rate adds confidence to this methodology.
+Breaking divergence down by sector gives a deeper look into market trends (see Figure ADD FIGURE NUMBER). This view reinforces the divergence rate as a metric to describe market behavior. Take the energy sector as an example. Leading up to the recession, the Iraq War caused a global oil shortage. [@luft_luft] In response, oil prices rose significantly. Figure ADD FIGURE NUMBER shows the market response in the energy sector to the increase in oil prices over the years 2005 to 2008. During the recession, the energy sector remained overvalued when all other sectors became undervalued in 2008. But, as the region began to recover in the following years [@jaffe_jareer_elass], the valuation of the energy sector normalized. Seeing real world events reflected in the divergence rate adds confidence to this methodology.
 
 ![Figure #.](all_sectors_divergence.jpg)  
 
 ### Real Estate   
 
-Briefly, we want to highlight the divergence rate trends in the real estate sector, given the importance of real estate products and housing prices to the Great Recession. (ADD CITATION: https://furmancenter.org/files/publications/HousingandtheGreatRecession.pdf) In the early 2000's, mortgage lenders began extending credit to higher risk borrowers and apportioning this risk out to investors through private-label mortgage backed securities. (ADD CITATION: https://www.federalreservehistory.org/essays/subprime_mortgage_crisis) Adding more buyers to the market caused a spike in housing prices, leading to the overvaluing of the real estate market shown in Figure ADD FIGURE NUMBER during the years 2005, 2006, and 2007. Then, as high-risk lenders began to default on their loans en masse, the real estate market collapsed, leading to losses as the market became saturated with properties. Figure ADD FIGURE NUMBER shows this in the years from 2007 to 2012. Now, new regulations including the Dodd-Frank act have stabilized the market (ADD CITATION: https://knowledge.wharton.upenn.edu/article/housing-mortgage-markets-may-recovered-risks-remain/), shown in the years from 2013 onward. This anecedote offers further evidence that the divergence rate metric accurately tracks market trends. 
+Briefly, we want to highlight the divergence rate trends in the real estate sector, given the importance of real estate products and housing prices to the Great Recession. [@ellen_dastrup] In the early 2000's, mortgage lenders began extending credit to higher risk borrowers and apportioning this risk out to investors through private-label mortgage backed securities. [@duca] Adding more buyers to the market caused a spike in housing prices, leading to the overvaluing of the real estate market shown in Figure ADD FIGURE NUMBER during the years 2005, 2006, and 2007. Then, as high-risk lenders began to default on their loans en masse, the real estate market collapsed, leading to losses as the market became saturated with properties. Figure ADD FIGURE NUMBER shows this in the years from 2007 to 2012. Now, new regulations including the Dodd-Frank act have stabilized the market [@housing], shown in the years from 2013 onward. This anecedote offers further evidence that the divergence rate metric accurately tracks market trends. 
 
 ![Figure #.](real_estate_divergence.jpg)
 
@@ -119,26 +119,11 @@ Reproduce the plots in the paper. Note differences and extend to new years. Expl
 
 ![Figure #.](true_vs_predicted.jpg) 
 
-# Sources
-
-NEED TO ADD FULL CITATIONS HERE. BIBTEX OFFERS A WAY TO IMPORT THESE CITATIONS
-
-ADD THIS TO OUR CITATIONS: 
-Oil Prices and the Iraq War: Market Interpretations of Military
-Developments
-Strategic Insights, Volume II, Issue 4 (April 2003)
-by Robert Looney 
-
-ADD THIS TO OUR CITATIONS:
-https://www.forbes.com/sites/katinastefanova/2019/01/27/a-toothless-faang/#55760fcd672f
-
-ADD THIS TO OUR CITATIONS:
-https://markets.businessinsider.com/news/stocks/amazon-apple-facebook-netflix-google-break-up-faangs-2019-1-1027916057
 
 # Appendix  
 
 This project has an extensive codebase, which may be accessed on github. (https://github.com/elegant-chaos/recession_indicators) Please note: the database we sourced our data from has usage restrictions, so the repository does not include our dataset. 
 
-
+# Sources 
 
 
