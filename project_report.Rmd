@@ -20,6 +20,8 @@ NOTES: THIS FIGURE WIDTH CODE ISN'T WORKING TO REDUCE THE IMAGE SIZE AND THE BIB
 #knitr::include_graphics("path/to/image.png")
 ```
 
+ANOTHER ISSUE WITH THE IMAGES: THEY ARE NOT KNITING INLINE WHERE WE PLACE THEM. INSTEAD THEY JUST SHOW UP RANDOMLY THROUGH-OUT THE PDF. I THINK THE SOLUTION TO ALL THESE ISSUES IS TO GO WITH THE KNITR PACKAGE
+
 ALSO, LATEX AUTONUMBERS THE FIGURES. SO, IN EACH FIGURE CAPTION WHERE WE HAVE CURRENTLY TYPED 'Figure #' NEEDS TO BE DELETED AND FILLED IN WITH A DESCRIPTION FIGURE CAPTION. SEE THE MOST RECENT UPLOADED PDF TO SEE WHAT I MEAN.
 
 # Abstract
@@ -89,10 +91,15 @@ Breaking divergence down by sector gives a deeper look into market trends (see F
 
 ### Real Estate   
 
-Briefly, we want to highlight the 
+Briefly, we want to highlight the divergence rate trends in the real estate sector, given the importance of real estate products and housing prices to the Great Recession. (ADD CITATION: https://furmancenter.org/files/publications/HousingandtheGreatRecession.pdf) In the early 2000's, mortgage lenders began extending credit to higher risk borrowers and apportioning this risk out to investors through private-label mortgage backed securities. (ADD CITATION: https://www.federalreservehistory.org/essays/subprime_mortgage_crisis) Adding more buyers to the market caused a spike in housing prices, leading to the overvaluing of the real estate market shown in Figure ADD FIGURE NUMBER during the years 2005, 2006, and 2007. Then, as high-risk lenders began to default on their loans en masse, the real estate market collapsed, leading to losses as the market became saturated with properties. Figure ADD FIGURE NUMBER shows this in the years from 2007 to 2012. Now, new regulations including the Dodd-Frank act have stabilized the market (ADD CITATION: https://knowledge.wharton.upenn.edu/article/housing-mortgage-markets-may-recovered-risks-remain/), shown in the years from 2013 onward. This anecedote offers further evidence that the divergence rate metric accurately tracks market trends. 
 
 ![Figure #.](real_estate_divergence.jpg)
 
+### FAANG Stocks  
+
+
+
+![Divergence Rate trends for Facebook, Apple, Amazon, Netflix and Google](faang_stocks_divergence_dist.jpg)
 
 # Limitations & Future Work
 
