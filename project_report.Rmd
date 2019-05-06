@@ -97,7 +97,7 @@ Briefly, we want to highlight the divergence rate trends in the real estate sect
 
 ### FAANG Stocks  
 
-
+To fully assess the performance of the Diversion Rate metric, we also looked into the behavior of the so-called FAANG stocks, composed of Facebook, Apple, Amazon, Netflix, and Google. Collectively, these stocks make up about 37% of the NASDAQ composite index, about 12% of the S&P 500, and about 5% of the Dow Jones index (calculated May 29, 2019). These stocks provide an alternate look at how well Diversion Rate tracks market trends because, during the entire first recession, these stocks had very different performance rates than the majority of the market. Unlike other stocks, the FAANG collection entered the recession undervalued and displayed meteoric year-over-year growth until recently. Now, the majority of these stocks are considered over-valued by our model. Recent headlines such as "A Toothless FAANG" in Forbes and "It's Time to Break up the FAANGs" in Markets Insider hint that the investment community has begun to feel wary of this group of stocks. The fact that our divergence rate metric reflects the overvaluation of these stocks provides more evidence that divergence rate offers insight into market trends. 
 
 ![Divergence Rate trends for Facebook, Apple, Amazon, Netflix and Google](faang_stocks_divergence_dist.jpg)
 
@@ -128,6 +128,12 @@ Oil Prices and the Iraq War: Market Interpretations of Military
 Developments
 Strategic Insights, Volume II, Issue 4 (April 2003)
 by Robert Looney 
+
+ADD THIS TO OUR CITATIONS:
+https://www.forbes.com/sites/katinastefanova/2019/01/27/a-toothless-faang/#55760fcd672f
+
+ADD THIS TO OUR CITATIONS:
+https://markets.businessinsider.com/news/stocks/amazon-apple-facebook-netflix-google-break-up-faangs-2019-1-1027916057
 
 # Appendix  
 
