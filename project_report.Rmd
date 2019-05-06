@@ -20,6 +20,10 @@ NOTES: THIS FIGURE WIDTH CODE ISN'T WORKING TO REDUCE THE IMAGE SIZE AND THE BIB
 #knitr::include_graphics("path/to/image.png")
 ```
 
+ANOTHER ISSUE WITH THE IMAGES: THEY ARE NOT KNITING INLINE WHERE WE PLACE THEM. INSTEAD THEY JUST SHOW UP RANDOMLY THROUGH-OUT THE PDF. I THINK THE SOLUTION TO ALL THESE ISSUES IS TO GO WITH THE KNITR PACKAGE
+
+ALSO, LATEX AUTONUMBERS THE FIGURES. SO, IN EACH FIGURE CAPTION WHERE WE HAVE CURRENTLY TYPED 'Figure #' NEEDS TO BE DELETED AND FILLED IN WITH A DESCRIPTION FIGURE CAPTION. SEE THE MOST RECENT UPLOADED PDF TO SEE WHAT I MEAN.
+
 # Abstract
 Recreate the paper, describe. Extend analysis through current year. Summarize findings. 
 
@@ -71,20 +75,31 @@ In this formula, $Y_{it}$ is the observed stock price for company $i$ at time $t
 
 ## Mean Divergence Rate Over Time
 
-The two figures below display the time effects coefficients from model and the mean divergence rate by year. We can see that, as expected, these two figures track each other. While it feels counterintuitive to leave an informative variable out of the model, in this case doing so gives us a powerful tool. Now, we can track in real time, how over or undervalued the market is as a whole. Our sample only contains one recession (2008-2009), so it is less powerful than a dataset that contains all known recessions. However, we can look here to seek potential recession indicating trends. In the years leading up to the recession, the market became overvalued. And then, in 2008, the recession led to an undervaluing of the market as a whole. Looking to the current year, we can see that 2019 the market appears more overvalued than at any other point in the dataset. Other recession indictors outside our model have also appeared recently, including the inversion of the bond yield curve, which has preceded every recent recession. \cite{yield} We interpret the overvaluing of 2019 by our indicated by our model cautiously, since we only have one quarter of 2019 in the data so far. But, this trend matches our assertion about the overvaluing of the market serving as a potential recession indicator. 
+The two figures below display the time effects coefficients from the two-way fixed effect model and the mean divergence rate by year. We can see that, as expected, these two figures track each other. While it feels counterintuitive to leave an informative variable out of the model, in this case doing so gives us a powerful tool. Now, we can track in real time, how over or undervalued the market is as a whole. Our sample only contains one recession (2008-2009), so it is less powerful than a dataset that contains all known recessions. However, we can look here to seek potential recession indicating trends. In the years leading up to the recession, the market became overvalued. And then, in 2008, the recession led to an undervaluing of the market as a whole. Looking to the current year, we can see that, in 2019, the market appears more overvalued than at any other point in the dataset. Other recession indictors outside our model have also appeared recently, including the inversion of the bond yield curve, which has preceded every recent recession. [@yield] We interpret the overvaluing of 2019 indicated by our model cautiously, since we only have one quarter of 2019 in the data so far. But, this trend matches our assertion about the overvaluing of the market serving as a potential recession indicator. 
 
 ![Figure #.](time_fixed_effects_coefficients.jpg)
 
 ![Figure #.](mean_divergence_rate_by_year.jpg)
 
-## Divergence Rate by Sector  
+## Divergence Rate by Sector   
 
+### All Sectors  
 
+Breaking divergence down by sector gives a deeper look into market trends (see Figure ADD FIGURE NUMBER). This view reinforces the divergence rate as a metric to describe market behavior. Take the energy sector as an example. Leading up to the recession, the Iraq War caused a global oil shortage. (ADD THIS TO OUR CITATIONS:  https://www.brookings.edu/research/iraqs-oil-sector-one-year-after-liberation/) In response, oil prices rose significantly. Figure ADD FIGURE NUMBER shows the market response in the energy sector to the increase in oil prices over the years 2005 to 2008. During the recession, the energy sector remained overvalued when all other sectors became undervalued in 2008. But, as the region began to recover in the following years (ADD THIS TO OUR CITATIONS: https://jia.sipa.columbia.edu/war-oil-price-cycle), the valuation of the energy sector normalized. Seeing real world events reflected in the divergence rate adds confidence to this methodology.
 
-![Figure #.](all_sectors_divergence.jpg)
+![Figure #.](all_sectors_divergence.jpg)  
+
+### Real Estate   
+
+Briefly, we want to highlight the divergence rate trends in the real estate sector, given the importance of real estate products and housing prices to the Great Recession. (ADD CITATION: https://furmancenter.org/files/publications/HousingandtheGreatRecession.pdf) In the early 2000's, mortgage lenders began extending credit to higher risk borrowers and apportioning this risk out to investors through private-label mortgage backed securities. (ADD CITATION: https://www.federalreservehistory.org/essays/subprime_mortgage_crisis) Adding more buyers to the market caused a spike in housing prices, leading to the overvaluing of the real estate market shown in Figure ADD FIGURE NUMBER during the years 2005, 2006, and 2007. Then, as high-risk lenders began to default on their loans en masse, the real estate market collapsed, leading to losses as the market became saturated with properties. Figure ADD FIGURE NUMBER shows this in the years from 2007 to 2012. Now, new regulations including the Dodd-Frank act have stabilized the market (ADD CITATION: https://knowledge.wharton.upenn.edu/article/housing-mortgage-markets-may-recovered-risks-remain/), shown in the years from 2013 onward. This anecedote offers further evidence that the divergence rate metric accurately tracks market trends. 
 
 ![Figure #.](real_estate_divergence.jpg)
 
+### FAANG Stocks  
+
+
+
+![Divergence Rate trends for Facebook, Apple, Amazon, Netflix and Google](faang_stocks_divergence_dist.jpg)
 
 # Limitations & Future Work
 
@@ -92,14 +107,13 @@ The data we used is not the same as the one used in the paper, which had 7,796 i
 
 INCLUDE LIMITATION
 
-In the future, we can change several aspecs of our project to look for other interesting trends. Firstly, our model only contains data from U.S. companies, since comparisions across currencies would have made the work of building this model more difficult. Normalizing across global currencies and including companies from markets outside the United States would likely improve the ability of this model to forecast recessions. Second, due to computational limitations, we did not include the entire history of the United States stock market. However, since the sample size of recessions is so small, including as many of them as possible in the model is important before drawing overarching conclusions about the validity of this model as a recession indicator. As of this work, the model only demonstrates that a high divergence rate may be related to an oncoming recession. Adding more recession samples might allow us to say that a high divergence rate is a likely recession indicator. 
+In the future, we can change several aspects of our project to look for other interesting trends. Firstly, our model only contains data from U.S. companies, since comparisions across currencies would have made the work of building this model more difficult. Normalizing across global currencies and including companies from markets outside the United States would likely improve the ability of this model to forecast recessions. Second, due to computational limitations, we did not include the entire history of the United States stock market. However, since the sample size of recessions is so small, including as many of them as possible in the model is important before drawing overarching conclusions about the validity of this model as a recession indicator. As of this work, the model only demonstrates that a high divergence rate may be related to an oncoming recession. Adding more recession samples might allow us to say that a high divergence rate is a likely recession indicator. 
 
 # Conclusion
 
 
 
 # Plots
-
 
 Reproduce the plots in the paper. Note differences and extend to new years. Explore new plots, see if we can come up with anything more descriptive. 
 
@@ -108,6 +122,12 @@ Reproduce the plots in the paper. Note differences and extend to new years. Expl
 # Sources
 
 NEED TO ADD FULL CITATIONS HERE. BIBTEX OFFERS A WAY TO IMPORT THESE CITATIONS
+
+ADD THIS TO OUR CITATIONS: 
+Oil Prices and the Iraq War: Market Interpretations of Military
+Developments
+Strategic Insights, Volume II, Issue 4 (April 2003)
+by Robert Looney 
 
 # Appendix  
 
