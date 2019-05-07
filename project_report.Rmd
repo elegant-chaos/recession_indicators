@@ -109,20 +109,22 @@ In the future, we can change several aspects of our project to look for other in
 
 Despite the differences in the data we fit our models on, we saw similar trends as shown in the paper [@kaizoji]. Interestingly, the chosen models were the same and showed that despite there being a greater number of years and a data set consistent of different companies, the methods were useful for the project goals and purposes. Looking at specific sectors and companies illustrated an interesting picture of differences between groups as well, reflecting current global trends and observations. Based on this research, while domain knowledge is crucial for any decisions if they were to be made, the model is a good indicator for understanding our economy and where it can be headed.
 
-# Plots
 
-Reproduce the plots in the paper. Note differences and extend to new years. Explore new plots, see if we can come up with anything more descriptive. 
+# Appendix.
 
-Figures 1 and 2 displayed in previous pages show a similar trend as that in the paper, with additional years past 2013. In Figure 6, we can see the graph on share prices and theoretical values. It is relatively similar to the one in the paper [@kaizoji], given a few minor differences. FOr example, our plot has greater deviation especially towards the tail-end on the left-hand side. However, both plots have a similar general trend and both have a cluster of outliers in similar areas.
+## Variable Distribution 
 
-CAN ADD THE OTHER GRAPHS TOO BUT HAVEN'T GIVEN SPACE LIMIT.
+During our in-class presentation, we received feedback from instructors about normalizing our response variable to ensure that the same variance condition is met before modelling. Figure 6 shows the distribution of price without any transformation (i.e. as the prices are) while Figure 7 shows the log transformed prices. Comparing the two, it is evident that the prices without transformation has a very long tail. However, in the transformed prices' distribution there is much more of an even distribution.
 
-```{r figs, out.width = "400px", echo=FALSE, fig.cap="\\label{fig:figs} Share Price and Theoretical Value"}
-knitr::include_graphics("true_vs_predicted.jpg")
+```{r figs, out.width = "400px", echo=FALSE, fig.cap="\\label{fig:figs} Distribution of Price without Transformation"}
+knitr::include_graphics("distribution_of_price_without_transformation.png")
 ```
 
+```{r figs, out.width = "400px", echo=FALSE, fig.cap="\\label{fig:figs} Distribution of Price with Transformation"}
+knitr::include_graphics("distribution_price_transformed.png")
+```
 
-# Appendix  
+## Github Repository
 
 This project has an extensive codebase, which may be accessed on github. (https://github.com/elegant-chaos/recession_indicators) Please note: the database we sourced our data from has usage restrictions, so the repository does not include our dataset. 
 
