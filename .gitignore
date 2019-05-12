@@ -6,3 +6,4 @@ sector.csv
 .Rhistory
 *.Rproj
 RDA_Files
+.DS_Store
